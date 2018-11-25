@@ -1,4 +1,4 @@
-Income tax calculator for financial year 2019-2020 India
+Income tax calculator for financial year 2018-2019 India
 
 Steps to use:
 - Clone the repo

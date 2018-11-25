@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Income tax calculator</title>
+  <link href="index.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<h1>Income Tax Calculator</h1>
+<h2>Salary</h2>
+<table>
+  <tr>
+    <th>#</th>
+    <th>Month</th>
+    <th><span>Basic: <button onclick='onFill("BASIC")'>fill</button></span></th>
+    <th><span>HRA: <button onclick='onFill("HRA")'>fill</button></span></th>
+    <th title='includes everything'>
+      <span>Total income: <button onclick='onFill("TOTAL_INCOME")'>fill</button></span></th>
+    <th><span>Rent paid: <button onclick='onFill("RENT")'>fill</button></span></th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>April</td>
+    <td><input type='number' id='BASIC_1'></td>
+    <td><input type='number' id='HRA_1'></td>
+    <td><input type='number' id='TOTAL_INCOME_1'></td>
+    <td><input type='number' id='RENT_1'></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>May</td>
+    <td><input type='number' id='BASIC_2' /></td>
+    <td><input type='number' id='HRA_2' /></td>
+    <td><input type='number' id='TOTAL_INCOME_2' /></td>
+    <td><input type='number' id='RENT_2' /></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>June</td>
+    <td><input type='number' id='BASIC_3' /></td>
+    <td><input type='number' id='HRA_3' /></td>
+    <td><input type='number' id='TOTAL_INCOME_3' /></td>
+    <td><input type='number' id='RENT_3' /></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>July</td>
+    <td><input type='number' id='BASIC_4' /></td>
+    <td><input type='number' id='HRA_4' /></td>
+    <td><input type='number' id='TOTAL_INCOME_4' /></td>
+    <td><input type='number' id='RENT_4' /></td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Aug</td>
+    <td><input type='number' id='BASIC_5' /></td>
+    <td><input type='number' id='HRA_5' /></td>
+    <td><input type='number' id='TOTAL_INCOME_5' /></td>
+    <td><input type='number' id='RENT_5' /></td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>Sept</td>
+    <td><input type='number' id='BASIC_6' /></td>
+    <td><input type='number' id='HRA_6' /></td>
+    <td><input type='number' id='TOTAL_INCOME_6' /></td>
+    <td><input type='number' id='RENT_6' /></td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>Oct</td>
+    <td><input type='number' id='BASIC_7' /></td>
+    <td><input type='number' id='HRA_7' /></td>
+    <td><input type='number' id='TOTAL_INCOME_7' /></td>
+    <td><input type='number' id='RENT_7' /></td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>Nov</td>
+    <td><input type='number' id='BASIC_8' /></td>
+    <td><input type='number' id='HRA_8' /></td>
+    <td><input type='number' id='TOTAL_INCOME_8' /></td>
+    <td><input type='number' id='RENT_8' /></td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>Dec</td>
+    <td><input type='number' id='BASIC_9' /></td>
+    <td><input type='number' id='HRA_9' /></td>
+    <td><input type='number' id='TOTAL_INCOME_9' /></td>
+    <td><input type='number' id='RENT_9' /></td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>Jan</td>
+    <td><input type='number' id='BASIC_10' /></td>
+    <td><input type='number' id='HRA_10' /></td>
+    <td><input type='number' id='TOTAL_INCOME_10' /></td>
+    <td><input type='number' id='RENT_10' /></td>
+  </tr>
+  <tr>
+    <td>11</td>
+    <td>Feb</td>
+    <td><input type='number' id='BASIC_11' /></td>
+    <td><input type='number' id='HRA_11' /></td>
+    <td><input type='number' id='TOTAL_INCOME_11' /></td>
+    <td><input type='number' id='RENT_11' /></td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>March</td>
+    <td><input type='number' id='BASIC_12' /></td>
+    <td><input type='number' id='HRA_12' /></td>
+    <td><input type='number' id='TOTAL_INCOME_12' /></td>
+    <td><input type='number' id='RENT_12' /></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Total</td>
+    <td><span id='TOTAL_BASIC'></span></td>
+    <td><span id='TOTAL_HRA'></span></td>
+    <td><span id='TOTAL_YEARLY_INCOME'></span></td>
+    <td><span id='TOTAL_RENT_PAID'></span></td>
+  </tr>
+</table>
+<br>
+<hr>
+<h2>HRA Calculator</h2>
+<table>
+  <tr>
+    <td><span>Actual HRA received from employer</span></td>
+    <td><span id='HRA_CONDITION_1'></span></td>
+  </tr>
+  <tr>
+    <td><span>Actual rent paid diff 10% of salary</span></td>
+    <td><span id='HRA_CONDITION_2'></span></td>
+  </tr>
+  <tr>
+    <td><span>50% of basic salary</span></td>
+    <td><span id='HRA_CONDITION_3'></span></td>
+  </tr>
+  <tr>
+    <td><span>Exemption (Least of above)</span></td>
+    <td><span id='HRA_EXEMPTION'></span></td>
+  </tr>
+</table>
+<br>
+<hr>
+<h2>Exemptions</h2>
+<div>Others: <input type='number' id='OTHER_EXEMPTIONS' /></div>
+<br>
+<hr>
+<h2>Tax brackets</h2>
+<h3>Total taxable income: <span id='TOTAL_TAXABLE_INCOME'></span></h3>
+<table>
+  <tr>
+    <th><span>Bracket (Lakhs)</span></th>
+    <th><span>Percentage (%)</span></th>
+    <th><span>Taxable amount</span></th>
+    <th><span>Tax</span></th>
+  </tr>
+  <tr>
+    <td><span>0 - 2.5</span></td>
+    <td><span>0</span></td>
+    <td><span id='TAXABLE_1'></span></td>
+    <td><span id='TAX_1'></span></td>
+  </tr>
+  <tr>
+    <td><span>2.5 - 5</span></td>
+    <td><span>5</span></td>
+    <td><span id='TAXABLE_2'></span></td>
+    <td><span id='TAX_2'></span></td>
+  </tr>
+  <tr>
+    <td><span>5 - 10</span></td>
+    <td><span>20</span></td>
+    <td><span id='TAXABLE_3'></span></td>
+    <td><span id='TAX_3'></span></td>
+  </tr>
+  <tr>
+    <td><span>10+</span></td>
+    <td><span>30</span></td>
+    <td><span id='TAXABLE_4'></span></td>
+    <td><span id='TAX_4'></span></td>
+  </tr>
+  <tr>
+    <td><span>Total</span></td>
+    <td><span></span></td>
+    <td><span></span></td>
+    <td><span id='TOTAL_TAX'></span></td>
+  </tr>
+  <tr>
+    <td><span>CESS (3%)</span></td>
+    <td><span></span></td>
+    <td><span></span></td>
+    <td><span id='CESS'></span></td>
+  </tr>
+</table>
+<br>
+<hr>
+<button onclick='calculate()'>CALCULATE</button>
+<br>
+<hr>
+<div>Your final total tax is: <span id='FINAL_TOTAL_TAX'></span></div>
+<div>Tax per month is: <span id='FINAL_TOTAL_TAX_PER_MONTH'></span></div>
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>

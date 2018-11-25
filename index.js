@@ -1,3 +1,30 @@
+const months = ['April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar'];
+
+(() => {
+  const salaryTable = document.getElementById('salaryTable');
+  const newInnerHTML = months.map((month, index) => {
+    const numString = `${index + 1}`;
+    return `<tr>
+    <td>${numString}</td>
+    <td>${month}</td>
+    <td><input type='number' id='BASIC_${numString}'></td>
+    <td><input type='number' id='HRA_${numString}'></td>
+    <td><input type='number' id='TOTAL_INCOME_${numString}'></td>
+    <td><input type='number' id='RENT_${numString}'></td>
+  </tr>`;
+  })
+    .concat([`<tr>
+    <td></td>
+    <td>Total</td>
+    <td><span id='TOTAL_BASIC'></span></td>
+    <td><span id='TOTAL_HRA'></span></td>
+    <td><span id='TOTAL_YEARLY_INCOME'></span></td>
+    <td><span id='TOTAL_RENT_PAID'></span></td>
+  </tr>`])
+    .join('');
+  salaryTable.innerHTML += newInnerHTML;
+})();
+
 const LAKHS = {
   '2.5': 250000,
   '5': 500000,

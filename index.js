@@ -18,7 +18,7 @@ const months = ['April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'De
     <td>Total</td>
     <td><span id='TOTAL_BASIC'></span></td>
     <td><span id='TOTAL_HRA'></span></td>
-    <td><span id='TOTAL_YEARLY_INCOME'></span></td>
+    <td><span id='TOTAL_SALARY'></span></td>
     <td><span id='TOTAL_RENT_PAID'></span></td>
   </tr>`])
     .join('');
@@ -41,19 +41,19 @@ const onFill = (type) => {
 const calculate = () => {
   let TOTAL_BASIC = 0;
   let TOTAL_HRA = 0;
-  let TOTAL_YEARLY_INCOME = 0;
+  let TOTAL_SALARY = 0;
   let TOTAL_RENT_PAID = 0;
 
   for (let i = 0; i < 12; i++) {
     TOTAL_BASIC = TOTAL_BASIC + (+document.getElementById(`BASIC_${i + 1}`).value);
     TOTAL_HRA = TOTAL_HRA + (+document.getElementById(`HRA_${i + 1}`).value);
-    TOTAL_YEARLY_INCOME = TOTAL_YEARLY_INCOME + (+document.getElementById(`TOTAL_INCOME_${i + 1}`).value);
+    TOTAL_SALARY = TOTAL_SALARY + (+document.getElementById(`TOTAL_INCOME_${i + 1}`).value);
     TOTAL_RENT_PAID = TOTAL_RENT_PAID + (+document.getElementById(`RENT_${i + 1}`).value);
   }
 
   document.getElementById('TOTAL_BASIC').innerHTML = `${TOTAL_BASIC}`;
   document.getElementById('TOTAL_HRA').innerHTML = `${TOTAL_HRA}`;
-  document.getElementById('TOTAL_YEARLY_INCOME').innerHTML = `${TOTAL_YEARLY_INCOME}`;
+  document.getElementById('TOTAL_SALARY').innerHTML = `${TOTAL_SALARY}`;
   document.getElementById('TOTAL_RENT_PAID').innerHTML = `${TOTAL_RENT_PAID}`;
 
   const HRA_CONDITION_1 = TOTAL_HRA;
@@ -69,8 +69,9 @@ const calculate = () => {
   document.getElementById('HRA_CONDITION_3').innerHTML = `${HRA_CONDITION_3}`;
   document.getElementById('HRA_EXEMPTION').innerHTML = `${HRA_EXEMPTION}`;
 
+  const OTHER_INCOME = +document.getElementById('OTHER_INCOME').value;
   const OTHER_EXEMPTIONS = +document.getElementById('OTHER_EXEMPTIONS').value;
-  const TOTAL_TAXABLE_INCOME = TOTAL_YEARLY_INCOME - HRA_EXEMPTION - OTHER_EXEMPTIONS;
+  const TOTAL_TAXABLE_INCOME = TOTAL_SALARY + OTHER_INCOME - HRA_EXEMPTION - OTHER_EXEMPTIONS;
   document.getElementById('TOTAL_TAXABLE_INCOME').innerHTML = `${TOTAL_TAXABLE_INCOME}`;
 
   if (TOTAL_TAXABLE_INCOME > 0) {
